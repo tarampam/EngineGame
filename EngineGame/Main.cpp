@@ -20,9 +20,9 @@ int main(void)
         engine.clearScreen();
         //engine.timer();
 
-        engine.processInputKey();
-
         engine.createPoints();
+
+        engine.processInputKey();
         /* Swap front and back buffers */
         glfwSwapBuffers(engine.m_GameWindow);
 
