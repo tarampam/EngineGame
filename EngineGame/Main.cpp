@@ -1,4 +1,5 @@
 #include "Engine.h"
+#include "Point2D.h"
 #define SCREEN_WIDTH 800
 #define SCREEN_HEIGHT 600
 int main(void)
@@ -17,9 +18,7 @@ int main(void)
     {
         /* Render here */
         engine.clearScreen();
-        engine.timer();
-
-        engine.createPoints();
+        //engine.timer();
 
         engine.processInputKey();
 
