@@ -22,6 +22,7 @@ int main(void)
 
         engine.processInputKey();
 
+        engine.createPoints();
         /* Swap front and back buffers */
         glfwSwapBuffers(engine.m_GameWindow);
 
