@@ -1,5 +1,6 @@
 #include "Engine.h"
 #include "Point2D.h"
+#include "LineSegment.h"
 #include "PrimitiveRenderer.h"
 
 #define SCREEN_WIDTH 800
