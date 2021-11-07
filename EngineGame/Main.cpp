@@ -1,5 +1,6 @@
 #include "Engine.h"
 #include "Point2D.h"
+#include "LineSegment.h"
 #define SCREEN_WIDTH 800
 #define SCREEN_HEIGHT 600
 int main(void)
