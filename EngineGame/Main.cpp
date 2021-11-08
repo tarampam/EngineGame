@@ -42,8 +42,14 @@ int main(void)
         engine.clearScreen();
         //engine.timer();
 
+        engine.createPoints();
         p->createTriangle(p1,p2,p3);
         p->createQuat(p4,p5);
+        p->craeteLineLoop(p1, p2, p3, p4, p6);
+
+        p->craeteLineStrip(p4, p5, p4, p6, p2);
+        p->craeteLineStrip(p4, p5, p1, p3, p2);
+        p->craeteLineLoop(p4, p5, p1, p3, p2);
         p->createPoint(p6);
         p->createLine(p7, p6);
         p->cretaeLineBySegment(s1);
