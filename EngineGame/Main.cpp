@@ -22,6 +22,7 @@ int main(void)
     Point2D* p9 = new Point2D(200, 200);
     Point2D* p10 = new Point2D(400, 500);
     Point2D* p11 = new Point2D(300, 300);
+    Point2D* p12 = new Point2D(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
 
     LineSegment* s1 = new LineSegment(p9, p8);
 
@@ -42,18 +43,21 @@ int main(void)
         engine.clearScreen();
         //engine.timer();
 
-        engine.createPoints();
-        p->createTriangle(p1,p2,p3);
-        p->createQuat(p4,p5);
-        p->craeteLineLoop(p1, p2, p3, p4, p6);
+        //engine.createPoints();
+        //p->createTriangle(p1,p2,p3);
+        //p->createQuat(p4,p5);
+       // p->craeteLineLoop(p1, p2, p3, p4, p6);
 
-        p->craeteLineStrip(p4, p5, p4, p6, p2);
-        p->craeteLineStrip(p4, p5, p1, p3, p2);
-        p->craeteLineLoop(p4, p5, p1, p3, p2);
-        p->createPoint(p6);
-        p->createLine(p7, p6);
-        p->cretaeLineBySegment(s1);
-        p->createLineIncremental(p11, p10);
+        //p->craeteLineStrip(p4, p5, p4, p6, p2);
+        //p->craeteLineStrip(p4, p5, p1, p3, p2);
+        //p->craeteLineLoop(p4, p5, p1, p3, p2);
+        //p->createPoint(p6);
+        //p->createLine(p7, p6);
+        //p->cretaeLineBySegment(s1);
+        //p->createLineIncremental(p11, p10);
+
+        p->createCircle(p12, 120);
+        p->createEllipse(p12, 0, 360, 120, 60);
 
 
         engine.processInputKey();
