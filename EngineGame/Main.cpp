@@ -3,8 +3,15 @@
 #include "LineSegment.h"
 #include "PrimitiveRenderer.h"
 
+#include<dos.h>
+
+#include <windows.h> 
+
 #define SCREEN_WIDTH 800
 #define SCREEN_HEIGHT 600
+
+
+
 int main(void)
 {
     Engine engine;
@@ -39,22 +46,43 @@ int main(void)
     while (!glfwWindowShouldClose(engine.m_GameWindow))
     {
         /* Render here */
-        engine.clearScreen();
+          engine.clearScreen();
         //engine.timer();
 
         engine.createPoints();
         p->createTriangle(p1,p2,p3);
         p->createQuat(p4,p5);
-        p->craeteLineLoop(p1, p2, p3, p4, p6);
+      //  p->craeteLineLoop(p1, p2, p3, p4, p6);
 
         p->craeteLineStrip(p4, p5, p4, p6, p2);
-        p->craeteLineStrip(p4, p5, p1, p3, p2);
+      p->craeteLineStrip(p4, p5, p1, p3, p2);
         p->craeteLineLoop(p4, p5, p1, p3, p2);
-        p->createPoint(p6);
-        p->createLine(p7, p6);
-        p->cretaeLineBySegment(s1);
-        p->createLineIncremental(p11, p10);
+      //  p->createPoint(p6);
+      //  p->createLine(p7, p6);
+       // p->cretaeLineBySegment(s1);
+       //p->createLineIncremental(p11, p10);
 
+       
+   //     p->floodFill(150,250,(10,25, bialy,)
+
+      /* Color newColor = {255.0f, 255.0f, 255.0f};
+       Color oldColor = { 1.0f, 1.0f, 1.0f };*/
+       
+      
+
+
+        //struct Color old_col = { 1.0,0.0,1.0 };
+        struct Color new_col = { 2.0,1.0,0.0 };
+      //  
+       // p->boundaryFill(110, 110, old_col, new_col);
+
+
+        p->floodFill(30, 30, new_col);
+      //  p->floodFill(110, 110, old_col, new_col);
+        //delay(10000);
+       
+       // p->floodFill(150, 350, new_col);
+        //delay(10000);
 
         engine.processInputKey();
         /* Swap front and back buffers */
@@ -62,6 +90,7 @@ int main(void)
 
         /* Poll for and process events */
         glfwPollEvents();
+        Sleep(5000);
 
     }
 

@@ -1,4 +1,9 @@
 #include "PrimitiveRenderer.h"
+
+#include <windows.h> 
+
+
+
 //TODO:refactor
 void PrimitiveRenderer::createTriangle(Point2D *p1, Point2D *p2, Point2D *p3) {
     GLfloat vertices[] = {
@@ -18,7 +23,7 @@ void PrimitiveRenderer::createTriangle(Point2D *p1, Point2D *p2, Point2D *p3) {
         p1->getX(),  p2->getY(), DOUBLE_0
         };
 
-
+      // glColor3f(1.0, 1.0, 0.0);
         display(vertices, GL_QUADS, 4);
     }
 
@@ -97,4 +102,135 @@ void PrimitiveRenderer::createTriangle(Point2D *p1, Point2D *p2, Point2D *p3) {
         };
 
         display(vertices, GL_LINE_STRIP, 5);
-    };
+    }
+
+   struct Color PrimitiveRenderer::getPixelColor(GLint x, GLint y)
+    {
+        struct Color color;
+        glReadPixels(x, y, 1, 1, GL_RGB, GL_FLOAT, &color);
+        //std::cout << color.r << " " << color.g << " " << color.b << std::endl;
+        return color;
+    }
+
+    void PrimitiveRenderer::setPixelColor(GLint x, GLint y, Color color)
+    {
+        
+        glColor3f(color.r, color.g, color.b);
+         glBegin(GL_POINTS);
+         glVertex2i(x, y);
+         glEnd();
+        // glFlush();
+        
+    }
+
+
+
+    /*void PrimitiveRenderer::boundaryFill(GLint x, GLint y, Color oldColor, Color newColor)
+    {
+        
+        if (getPixelColor(x, y) != newColor.r  && getPixelColor(x, y) != newColor.g && getPixelColor(x, y) != newColor.b &&
+            getPixelColor(x, y) != oldColor.r &&
+            getPixelColor(x, y) != oldColor.g &&
+            getPixelColor(x, y) != oldColor.b)
+           {
+            setPixelColor(x, y, newColor);
+              boundaryFill(x + 1, y, newColor, oldColor);
+              boundaryFill(x, y + 1, newColor, oldColor);
+              boundaryFill(x - 1, y, newColor, oldColor);
+              boundaryFill(x, y - 1, newColor, oldColor);
+            }
+        
+    }*/
+
+
+   void PrimitiveRenderer::boundaryFill(GLint x, GLint y, Color fill_color, Color boundary_color)
+    {
+        struct Color color;
+        color = getPixelColor(x, y);
+
+        if ((color.r != fill_color.r && color.g != fill_color.g && color.b != fill_color.b) 
+            && (color.r != boundary_color.r && color.g != boundary_color.g && color.b != boundary_color.b))
+
+        {
+            setPixelColor(x, y, fill_color);
+            boundaryFill(x + 1, y, fill_color, boundary_color);
+            boundaryFill(x, y + 1, fill_color, boundary_color);
+            boundaryFill(x - 1, y, fill_color, boundary_color);
+            boundaryFill(x, y - 1, fill_color, boundary_color);
+            boundaryFill(x - 1, y - 1, fill_color, boundary_color);
+            boundaryFill(x - 1, y + 1, fill_color, boundary_color);
+            boundaryFill(x + 1, y - 1, fill_color, boundary_color);
+            boundaryFill(x + 1, y + 1, fill_color, boundary_color);
+          //  Sleep(100000);
+            //glFlush();
+            
+           // 
+        }
+    }
+
+   void PrimitiveRenderer::floodFill(GLint x, GLint y, Color newColor) {
+
+       struct Color color;
+       color = getPixelColor(x, y);
+       floodFill(x, y, newColor, color);
+
+   }
+
+
+    void PrimitiveRenderer::floodFill(GLint x, GLint y, Color newColor, Color oldColor)
+    {
+        std::cout << x << " " <<  y << std::endl;
+        //Sleep(500);
+       struct Color color;
+        color = getPixelColor(x, y);
+    
+
+        //printf("red:%f green:%f blue:%f\n", color.r, color.g, color.b);
+
+        if (color.r == oldColor.r && color.g == oldColor.g && color.b == oldColor.b)
+        {
+            setPixelColor(x, y, newColor);
+            floodFill(x + 1, y, newColor, oldColor);
+            floodFill(x, y + 1, newColor, oldColor);
+            floodFill(x - 1, y, newColor, oldColor);
+            floodFill(x, y - 1, newColor, oldColor);
+
+            // put new pixel with new color 
+          /* glBegin(GL_POINTS);
+            glColor3f(1, 1, 0);
+            glVertex2i(x, y);
+            glEnd();
+            glFlush();*/
+        }
+        else {
+            return;
+        }
+        return;
+    }
+    
+
+
+
+    
+      
+   /* void PrimitiveRenderer::floodFill(float x, float y, glColor3b kw, glColor3b kk)
+    {
+
+    }*/
+
+   /* void PrimitiveRenderer::floodFill(float x, float y, float  kw, float kk)
+    {
+        if( glReadPixels(x,y)) == kw ) return;
+       if (glReadPixels(x, y)) == kk ) return;
+
+     //  glDrawPixels()
+         //  void glDrawPixels(GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid * pixels)
+         glReadPixels(x, y, 1, 1, GL_RGB, GL_FLOAT, &color));
+
+         floodFill(x + 1, y, kw, kk); // Prawo
+         floodFill(x, y - 1, kw, kk); // Góra
+         floodFill(x - 1, y, kw, kk); // Lewo
+         floodFill(x, y + 1, kw, kk); // Dó³
+    }
+    */
+   
