@@ -3,9 +3,11 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include <math.h>
+#define PI 3.14159265
 
 #include "Point2D.h"
 #include "LineSegment.h"
+
 
 #define DOUBLE_0  0.0
 
@@ -19,6 +21,8 @@ public:
     void createLineIncremental(Point2D* p1, Point2D* p2);
     void createLine(Point2D* p1, Point2D* p2);
     void cretaeLineBySegment(LineSegment* s1);
+    void createCircle(Point2D* p1, float r);
+    void createEllipse(Point2D* p1, float stAngle, float endAngle, int rx, int ry);
 
     void display(GLfloat vertices[], int GLShapeType, int verticesAmount);
 

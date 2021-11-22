@@ -92,6 +92,7 @@ void Engine::initPointDrawer() {
     glOrtho(0, 800, 0, 600, 0, 1); // essentially set coordinate system
     glMatrixMode(GL_MODELVIEW); // (default matrix mode) modelview matrix defines how your objects are transformed (meaning translation, rotation and scaling) in your world
     glLoadIdentity(); // same as above comment
+
 }
 
 void Engine::createPoints() {

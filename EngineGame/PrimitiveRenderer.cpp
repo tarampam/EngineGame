@@ -64,6 +64,47 @@ void PrimitiveRenderer::createTriangle(Point2D *p1, Point2D *p2, Point2D *p3) {
         display(vertices, GL_LINES, 2);
     }
 
+    void PrimitiveRenderer::createCircle(Point2D* p1, float r)
+    {
+        float a, step;
+        float x, y;
+
+        float xc = p1->getX();
+        float yc = p1->getY();
+        unsigned int value = 0xffffffff;
+
+        step = 1.0 / r;
+        glBegin(GL_LINE_LOOP);
+        for (a = 0; a < (2 * PI); a += step) {
+            glVertex2f(
+                x = xc + r * cos(a) + 0.5,
+                y = yc + r * sin(a) + 0.5
+            );
+        }
+        glEnd();
+
+    }
+
+    void PrimitiveRenderer::createEllipse(Point2D* p1,float stAngle, float endAngle, int rx, int ry)
+    {
+        float a;
+        float x, y;
+
+        float xc = p1->getX();
+        float yc = p1->getY();
+        unsigned int value = 0xffffffff;
+
+        glBegin(GL_LINE_STRIP);
+        for (a = stAngle; a <= endAngle; a+=0.001) {
+            glVertex2f(
+                x = xc + rx * cos(a),
+                y = yc + ry * sin(a)
+            );
+        }
+        glEnd();
+
+    }
+
 
     void PrimitiveRenderer::display(GLfloat vertices[], int GLShapeType, int verticesAmount) {
         glEnableClientState(GL_VERTEX_ARRAY);

@@ -2,6 +2,8 @@
 #include "Point2D.h"
 #include "LineSegment.h"
 #include "PrimitiveRenderer.h"
+#include "Circle.h"
+#include "Triangle.h"
 
 #include "Player.h"
 
@@ -25,8 +27,7 @@ int main(void)
     Point2D* p9 = new Point2D(200, 200);
     Point2D* p10 = new Point2D(400, 500);
     Point2D* p11 = new Point2D(300, 300);
-
-   
+    Point2D* p12 = new Point2D(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
 
     LineSegment* s1 = new LineSegment(p9, p8);
 
@@ -40,6 +41,9 @@ int main(void)
 
     engine.mouseProcess();
 
+    int rotateFlag = 1;
+    Circle* x = new Circle("1", glm::vec3(0, 0, 0), glm::vec3(0, 0, 0), new Point2D(20.0, 20.0), 30.0);
+    Triangle* t1 = new Triangle("2", glm::vec3(0, 0, 0), glm::vec3(0, 0, 0), new Point2D(10,10), new Point2D(10, 20), new Point2D(20, 10));
     
     while (!glfwWindowShouldClose(engine.m_GameWindow))
     {
@@ -47,22 +51,33 @@ int main(void)
         engine.clearScreen();
         //engine.timer();
 
-        engine.createPoints();
-        p->createTriangle(p1,p2,p3);
-      //  p->createQuat(p4,p5);
-      //  p->craeteLineLoop(p1, p2, p3, p4, p6);
+        //engine.createPoints();
+        //p->createTriangle(p1,p2,p3);
+        //p->createQuat(p4,p5);
+       // p->craeteLineLoop(p1, p2, p3, p4, p6);
 
-      //  p->craeteLineStrip(p4, p5, p4, p6, p2);
-      //  p->craeteLineStrip(p4, p5, p1, p3, p2);
-      //  p->craeteLineLoop(p4, p5, p1, p3, p2);
-      //  p->createPoint(p6);
-      //  p->createLine(p7, p6);
-      //  p->cretaeLineBySegment(s1);
-      //  p->createLineIncremental(p11, p10);
+        //p->craeteLineStrip(p4, p5, p4, p6, p2);
+        //p->craeteLineStrip(p4, p5, p1, p3, p2);
+        //p->craeteLineLoop(p4, p5, p1, p3, p2);
+        //p->createPoint(p6);
+        //p->createLine(p7, p6);
+        //p->cretaeLineBySegment(s1);
+        //p->createLineIncremental(p11, p10);
 
-
+        p->createCircle(p12, 120);
+        p->createEllipse(p12, 0, 360, 120, 60);
         
+        x->translate(glm::vec3(1, 1, 1));
+        x->draw();
 
+        t1->draw();
+        if (rotateFlag == 1)
+        {
+            std::cout << 1;
+            //t1->rotate(45, glm::vec3(40, 10, 0));
+            t1->scale(5, glm::vec3(40, 40, 0));
+            rotateFlag = 2;
+        }
 
         engine.processInputKey();
         /* Swap front and back buffers */
