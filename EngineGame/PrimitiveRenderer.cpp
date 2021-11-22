@@ -64,7 +64,7 @@ void PrimitiveRenderer::createTriangle(Point2D *p1, Point2D *p2, Point2D *p3) {
         display(vertices, GL_LINES, 2);
     }
 
-    void PrimitiveRenderer::createCircle(Point2D* p1, int r)
+    void PrimitiveRenderer::createCircle(Point2D* p1, float r)
     {
         float a, step;
         float x, y;
