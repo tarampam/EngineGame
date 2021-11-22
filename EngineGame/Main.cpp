@@ -3,6 +3,9 @@
 #include "LineSegment.h"
 #include "PrimitiveRenderer.h"
 
+#include "Player.h"
+
+
 #define SCREEN_WIDTH 800
 #define SCREEN_HEIGHT 600
 int main(void)
@@ -22,6 +25,8 @@ int main(void)
     Point2D* p9 = new Point2D(200, 200);
     Point2D* p10 = new Point2D(400, 500);
     Point2D* p11 = new Point2D(300, 300);
+
+   
 
     LineSegment* s1 = new LineSegment(p9, p8);
 
@@ -44,16 +49,19 @@ int main(void)
 
         engine.createPoints();
         p->createTriangle(p1,p2,p3);
-        p->createQuat(p4,p5);
-        p->craeteLineLoop(p1, p2, p3, p4, p6);
+      //  p->createQuat(p4,p5);
+      //  p->craeteLineLoop(p1, p2, p3, p4, p6);
 
-        p->craeteLineStrip(p4, p5, p4, p6, p2);
-        p->craeteLineStrip(p4, p5, p1, p3, p2);
-        p->craeteLineLoop(p4, p5, p1, p3, p2);
-        p->createPoint(p6);
-        p->createLine(p7, p6);
-        p->cretaeLineBySegment(s1);
-        p->createLineIncremental(p11, p10);
+      //  p->craeteLineStrip(p4, p5, p4, p6, p2);
+      //  p->craeteLineStrip(p4, p5, p1, p3, p2);
+      //  p->craeteLineLoop(p4, p5, p1, p3, p2);
+      //  p->createPoint(p6);
+      //  p->createLine(p7, p6);
+      //  p->cretaeLineBySegment(s1);
+      //  p->createLineIncremental(p11, p10);
+
+
+        
 
 
         engine.processInputKey();
