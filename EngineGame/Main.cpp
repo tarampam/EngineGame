@@ -2,6 +2,8 @@
 #include "Point2D.h"
 #include "LineSegment.h"
 #include "PrimitiveRenderer.h"
+#include "Circle.h"
+#include "Triangle.h"
 
 #define SCREEN_WIDTH 800
 #define SCREEN_HEIGHT 600
@@ -36,6 +38,9 @@ int main(void)
 
     engine.mouseProcess();
 
+    int rotateFlag = 1;
+    Circle* x = new Circle("1", glm::vec3(0, 0, 0), glm::vec3(0, 0, 0), new Point2D(20.0, 20.0), 30.0);
+    Triangle* t1 = new Triangle("2", glm::vec3(0, 0, 0), glm::vec3(0, 0, 0), new Point2D(10,10), new Point2D(10, 20), new Point2D(20, 10));
     
     while (!glfwWindowShouldClose(engine.m_GameWindow))
     {
@@ -58,7 +63,18 @@ int main(void)
 
         p->createCircle(p12, 120);
         p->createEllipse(p12, 0, 360, 120, 60);
+        
+        x->translate(glm::vec3(1, 1, 1));
+        x->draw();
 
+        t1->draw();
+        if (rotateFlag == 1)
+        {
+            std::cout << 1;
+            //t1->rotate(45, glm::vec3(40, 10, 0));
+            t1->scale(5, glm::vec3(40, 40, 0));
+            rotateFlag = 2;
+        }
 
         engine.processInputKey();
         /* Swap front and back buffers */

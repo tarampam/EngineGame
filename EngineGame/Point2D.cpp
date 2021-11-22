@@ -6,6 +6,13 @@ Point2D::Point2D(float x, float y) {
 	this->z = 0.0;
 }
 
+Point2D::Point2D()
+{
+	this->x = 0.0;
+	this->y = 0.0;
+	this->z = 0.0;
+}
+
 float Point2D::getX() {
 	return this->x;
 }
