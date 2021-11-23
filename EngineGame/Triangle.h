@@ -1,6 +1,6 @@
 #pragma once
 #include "ShapeObject.h"
-#include "PrimitiveRenderer.h"
+
 class Triangle: public ShapeObject
 {
 private:
