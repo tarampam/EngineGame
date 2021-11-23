@@ -7,6 +7,7 @@ private:
 	Point2D* p1;
 	Point2D* p2;
 	Point2D* p3;
+
 public:
 	Triangle(std::string id, glm::vec3 position, glm::vec3 size, Point2D* p1, Point2D* p2, Point2D* p3);
 
