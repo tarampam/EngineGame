@@ -1,6 +1,6 @@
 #include "TransformableObject.h"
-TransformableObject::TransformableObject(std::string id, glm::vec3 position, glm::vec3 size)
-	:GameObject(id, position, size) {}
+TransformableObject::TransformableObject(std::string id)
+	:GameObject(id) {}
 
 void TransformableObject::translate(glm::vec3 moveVector)
 {
