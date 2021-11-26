@@ -152,6 +152,7 @@
     <ClInclude Include="Circle.h" />
     <ClInclude Include="DrawableObject.h" />
     <ClInclude Include="Engine.h" />
+    <ClInclude Include="Fps.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="LineSegment.h" />
     <ClInclude Include="Log.h" />
@@ -169,6 +170,7 @@
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="DrawableObject.cpp" />
     <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="Fps.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="LineSegment.cpp" />
     <ClCompile Include="Log.cpp" />
