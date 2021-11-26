@@ -4,6 +4,6 @@ class DrawableObject: virtual public GameObject
 {
 public:
 	virtual void draw();
-	DrawableObject(std::string id, glm::vec3 position, glm::vec3 size);
+	DrawableObject(std::string id);
 };
 

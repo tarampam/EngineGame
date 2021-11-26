@@ -7,7 +7,7 @@ class Player:public ShapeObject {
 	Point2D *point2;
 public:
 
-	Player(std::string id, glm::vec3 position, glm::vec3 size, Point2D* point1, Point2D* point2);
+	Player(std::string id, Point2D* point1, Point2D* point2);
 
 	void draw() override;
 	void translate(glm::vec3 moveVector) override;

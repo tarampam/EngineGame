@@ -1,6 +1,6 @@
 #include "UpdatableObject.h"
-UpdatableObject::UpdatableObject(std::string id, glm::vec3 position, glm::vec3 size)
-	:GameObject(id, position, size) {}
+UpdatableObject::UpdatableObject(std::string id)
+	:GameObject(id) {}
 
 void UpdatableObject::update() {
 

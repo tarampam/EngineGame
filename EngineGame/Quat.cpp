@@ -1,7 +1,7 @@
 #include "Quat.h"
 
-Quat::Quat(std::string id, glm::vec3 position, glm::vec3 size, Point2D* p1, Point2D* p2)
-	:ShapeObject(id, position, size), DrawableObject(id, position, size), TransformableObject(id, position, size)
+Quat::Quat(std::string id, Point2D* p1, Point2D* p2)
+	:ShapeObject(id), DrawableObject(id), TransformableObject(id)
 {
 	this->p1 = p1;
 	this->p2 = p2;

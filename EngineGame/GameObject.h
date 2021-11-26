@@ -7,14 +7,10 @@ class GameObject
 {
 private: 
 	std::string id;
-	glm::vec3 position;
-	glm::vec3 size;
 
 public:
-	GameObject(const std::string& id, glm::vec3 position, glm::vec3 size);
+	GameObject(const std::string& id);
 	GameObject();
-	glm::vec3 getPosition(int instance_ID, glm::vec3& cords);
 	const std::string& getId() const { return this->id; };
-	//size
 };
 
