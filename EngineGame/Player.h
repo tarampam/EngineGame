@@ -1,9 +1,5 @@
 #pragma once
 #include "ShapeObject.h"
-#include "PrimitiveRenderer.h"
-#include "Point2D.h"
-#include "Engine.h"
-#include <glm.hpp>
 #include <iostream>
 
 class Player:public ShapeObject {
