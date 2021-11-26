@@ -4,6 +4,7 @@
 #include "PrimitiveRenderer.h"
 #include "Circle.h"
 #include "Triangle.h"
+#include "BitmapHandler.h"
 #include "Quat.h"
 #include "Player.h"
 
@@ -27,11 +28,12 @@ int main(void)
     Point2D* p10 = new Point2D(400, 500);
     Point2D* p11 = new Point2D(300, 300);
     Point2D* p12 = new Point2D(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
+    glm::vec4 clearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
     LineSegment* s1 = new LineSegment("001", p9, p8);
 
     PrimitiveRenderer *p =new PrimitiveRenderer();
-    engine.initGL(3, 3);
+    engine.initGL();
 
     engine.createWindow("Hello", SCREEN_WIDTH, SCREEN_HEIGHT);
     engine.initPointDrawer();
@@ -39,21 +41,24 @@ int main(void)
 
     engine.mouseProcess();
 
+    BitmapHandler* bitmap = new BitmapHandler();
+    GLuint texture = bitmap->loadTexture("Textures/image.BMP", 513, 400);
+
     int rotateFlag = 1;
     Circle* x = new Circle("1", new Point2D(20.0, 20.0), 30.0);
     Triangle* t1 = new Triangle("2", new Point2D(10,10), new Point2D(10, 20), new Point2D(20, 10));
     Quat* quat1 = new Quat("4", new Point2D(100, 100), new Point2D(110, 110));
     Quat* quat2 = new Quat("4", new Point2D(100, 100), new Point2D(110, 110));
-    Player* singlePLayer = new Player("3", new Point2D(10.0, 10.0), new Point2D(40.0, 40.0));
+    Player* singlePLayer = new Player("3", new Point2D(10.0, 10.0), new Point2D(40.0, 40.0), texture);
 
     Point2D* q1 = new Point2D(2.0, 2.0);
     Point2D* q2 = new Point2D(40.0, 40.0);
     Point2D* p0 = new Point2D(40.0, 40.0);
-
+        
     while (!glfwWindowShouldClose(engine.m_GameWindow))
     {
         /* Render here */
-        engine.clearScreen();
+        engine.clearScreen(clearColor);
         //engine.timer();
 
         singlePLayer->draw();
@@ -94,6 +99,11 @@ int main(void)
 
         /* Poll for and process events */
         glfwPollEvents();
+        if (rotateFlag == 2)
+        {
+            bitmap->saveAsBMP("bitmap.bmp");
+            rotateFlag = 3;
+        }
 
     }
 

@@ -5,9 +5,10 @@
 class Player:public ShapeObject {
 	Point2D *point1;
 	Point2D *point2;
+	GLuint texture;
 public:
 
-	Player(std::string id, Point2D* point1, Point2D* point2);
+	Player(std::string id, Point2D* point1, Point2D* point2, GLuint texture);
 
 	void draw() override;
 	void translate(glm::vec3 moveVector) override;

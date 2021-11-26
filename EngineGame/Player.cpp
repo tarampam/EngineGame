@@ -1,16 +1,17 @@
 #include "Player.h"
 
-Player::Player(std::string id, Point2D* point1, Point2D* point2)
+Player::Player(std::string id, Point2D* point1, Point2D* point2, GLuint texture)
 	:ShapeObject(id), DrawableObject(id), TransformableObject(id)
 {
 	this->point1 = point1;
 	this->point2 = point2;
+	this->texture = texture;
 }
 
 void Player::draw()
 {
-	PrimitiveRenderer *primitive = new PrimitiveRenderer();
-	primitive->createQuat(this->point1, this->point2);
+	PrimitiveRenderer primitive;
+	primitive.createQuat(this->point1, this->point2, this->texture);
 ;}
 
 void Player::translate(glm::vec3 moveVector)
