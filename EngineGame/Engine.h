@@ -3,15 +3,20 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include <math.h>
+#include <glm.hpp>
+#include <Windows.h>
+#include "Log.h"
 
 class Engine
 {
 public:
 	GLFWwindow* m_GameWindow;
 	double seconds;
+	Log log;
+
 
 	//inicjacja biblioteki graficznej
-	void initGL(unsigned int versionMajor, unsigned int versionMinor);
+	void initGL();
 
 	//parametryzowanie trybu graficznego
 	void createWindow(const char* title, unsigned int width, unsigned int height);
@@ -20,11 +25,11 @@ public:
 	bool HasFocus();
 	bool SetFullScreen();
 
-	//void setWindowPosition(const glm::vec2& pos);
-	//void setWindowSize(const glm::vec2& size);
+	void setWindowPosition(const glm::vec2& pos);
+	void setWindowSize(const glm::vec2& size);
 
 	void maximizeWindow();
-	void restoreWindow();
+	//void restoreWindow();
 	void showWindow();
 	void hideWindow();
 
@@ -46,13 +51,12 @@ public:
 	void processInputKey();
 
 	//czyszczenie ekranu bitmay do zadanego koloru
-	void clearScreen();
+	void clearScreen(glm::vec4 color);
 
 	//obs³uga b³êdów z mo¿liwoœci¹ wyœwietlania lub logowanie pliku komunikatów
 
 	//zamkniêcie gry - deinicjacja biblioteki, sprz¹tanie pamiêci
 	void cleanup();
-	void createPoints();
 	void initPointDrawer();
 
 };

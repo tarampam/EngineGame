@@ -2,26 +2,62 @@
 #include <iostream>
 
 
-void Engine::initGL(unsigned int versionMajor, unsigned int versionMinor) {
+void Engine::initGL() {
     glfwInit();
-    //glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-    //glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 4);
-    //glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);
 
     glewInit();
+    log._InitLog(glfwGetTime(), __FILE__, __LINE__);
 }
 
 void Engine::createWindow(const char* title, unsigned int width, unsigned int height) {
     m_GameWindow = glfwCreateWindow(width, height, title, NULL, NULL);
     if (!m_GameWindow) {
+        log.LogToFile("Failed to initialize game window");
+        log.LogToConsole("Failed to initialize game window");
         return;
     }
+    log._LogWindowCreation(glfwGetTime(), __FILE__, __LINE__);
     glfwMakeContextCurrent(m_GameWindow);
 }
 
 bool Engine::isVisible() {
     return (bool)glfwGetWindowAttrib(m_GameWindow, GLFW_VISIBLE);
+}
+
+bool Engine::HasFocus()
+{
+    return (bool)glfwGetWindowAttrib(m_GameWindow, GLFW_FOCUSED);
+}
+
+bool Engine::SetFullScreen()
+{
+    return false;
+}
+
+void Engine::setWindowPosition(const glm::vec2& pos)
+{
+    glfwSetWindowPos(m_GameWindow, (int)pos.x, (int)pos.y);
+}
+
+void Engine::setWindowSize(const glm::vec2& size)
+{
+    glfwSetWindowSize(m_GameWindow, (int)size.x, (int)size.y);
+}
+
+void Engine::maximizeWindow()
+{
+    glfwMaximizeWindow(m_GameWindow);
+}
+
+void Engine::showWindow()
+{
+    glfwShowWindow(m_GameWindow);
+}
+
+void Engine::hideWindow()
+{
+    glfwHideWindow(m_GameWindow);
 }
 
 void Engine::cursorPositionCallback(GLFWwindow* window, double xpos, double ypos) {
@@ -70,13 +106,15 @@ void Engine::processInputKey() {
         glfwSetWindowShouldClose(m_GameWindow, true);
     }
     if (glfwGetKey(m_GameWindow, GLFW_KEY_SPACE) == GLFW_PRESS) {
+        log.LogToFile("Space action");
+        log.LogToConsole("Space action");
         glfwSetWindowShouldClose(m_GameWindow, true);
     }
 
 }
 
-void Engine::clearScreen() {
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+void Engine::clearScreen(glm::vec4 color) {
+    glClearColor(color.x, color.y, color.z, color.w);
     glClear(GL_COLOR_BUFFER_BIT);
 }
 
@@ -92,14 +130,5 @@ void Engine::initPointDrawer() {
     glOrtho(0, 800, 0, 600, 0, 1); // essentially set coordinate system
     glMatrixMode(GL_MODELVIEW); // (default matrix mode) modelview matrix defines how your objects are transformed (meaning translation, rotation and scaling) in your world
     glLoadIdentity(); // same as above comment
-
-}
-
-void Engine::createPoints() {
-    GLfloat pointVertex[] = { 100, 100 };
-    glEnableClientState(GL_VERTEX_ARRAY); 
-    glVertexPointer(2, GL_FLOAT, 0, pointVertex); 
-    glDrawArrays(GL_POINTS, 0, 1);
-    glDisableClientState(GL_VERTEX_ARRAY);
 }
 

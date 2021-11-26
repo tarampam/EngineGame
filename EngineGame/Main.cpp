@@ -27,11 +27,12 @@ int main(void)
     Point2D* p10 = new Point2D(400, 500);
     Point2D* p11 = new Point2D(300, 300);
     Point2D* p12 = new Point2D(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
+    glm::vec4 clearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
     LineSegment* s1 = new LineSegment("001", p9, p8);
 
     PrimitiveRenderer *p =new PrimitiveRenderer();
-    engine.initGL(3, 3);
+    engine.initGL();
 
     engine.createWindow("Hello", SCREEN_WIDTH, SCREEN_HEIGHT);
     engine.initPointDrawer();
@@ -53,7 +54,7 @@ int main(void)
     while (!glfwWindowShouldClose(engine.m_GameWindow))
     {
         /* Render here */
-        engine.clearScreen();
+        engine.clearScreen(clearColor);
         //engine.timer();
 
         singlePLayer->draw();
