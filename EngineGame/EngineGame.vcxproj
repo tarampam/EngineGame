@@ -120,12 +120,15 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>GLEW_STATIC;WIN32;</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies/GLFW/include;$(SolutionDir)Dependencies/GLM/include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\GLEW\lib\Release\Win32;$(SolutionDir)Dependencies\GLFW\lib-vc2019</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glew32s.lib;glfw3.lib;opengl32.lib;User32.lib;Gdi32.lib;Shell32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -145,6 +148,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BitmapHandler.h" />
     <ClInclude Include="Circle.h" />
     <ClInclude Include="DrawableObject.h" />
     <ClInclude Include="Engine.h" />
@@ -159,6 +163,7 @@
     <ClInclude Include="UpdatableObject.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BitmapHandler.cpp" />
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="DrawableObject.cpp" />
     <ClCompile Include="Engine.cpp" />
