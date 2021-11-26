@@ -10,7 +10,7 @@ private:
 	float ray;
 
 public:
-	Circle(std::string id, glm::vec3 position, glm::vec3 size, Point2D* point, float ray);
+	Circle(std::string id, Point2D* point, float ray);
 
 	void draw() override;
 	void translate(glm::vec3 moveVector) override;

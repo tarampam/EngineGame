@@ -1,15 +1,12 @@
 #pragma once
 #include "ShapeObject.h"
-
-class Triangle: public ShapeObject
+class Quat: public ShapeObject
 {
 private:
 	Point2D* p1;
 	Point2D* p2;
-	Point2D* p3;
-
 public:
-	Triangle(std::string id, Point2D* p1, Point2D* p2, Point2D* p3);
+	Quat(std::string id, Point2D* p1, Point2D* p2);
 
 	void draw() override;
 	void translate(glm::vec3 moveVector) override;

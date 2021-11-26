@@ -154,9 +154,11 @@
     <ClInclude Include="Engine.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="LineSegment.h" />
+    <ClInclude Include="Log.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Point2D.h" />
     <ClInclude Include="PrimitiveRenderer.h" />
+    <ClInclude Include="Quat.h" />
     <ClInclude Include="ShapeObject.h" />
     <ClInclude Include="TransformableObject.h" />
     <ClInclude Include="Triangle.h" />
@@ -169,10 +171,12 @@
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="LineSegment.cpp" />
+    <ClCompile Include="Log.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Point2D.cpp" />
     <ClCompile Include="PrimitiveRenderer.cpp" />
+    <ClCompile Include="Quat.cpp" />
     <ClCompile Include="ShapeObject.cpp" />
     <ClCompile Include="TransformableObject.cpp" />
     <ClCompile Include="Triangle.cpp" />

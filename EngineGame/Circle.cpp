@@ -1,7 +1,7 @@
 #include "Circle.h"
 
-Circle::Circle(std::string id, glm::vec3 position, glm::vec3 size, Point2D *point, float ray)
-	:ShapeObject(id, position, size), DrawableObject(id, position, size), TransformableObject(id, position, size)
+Circle::Circle(std::string id, Point2D *point, float ray)
+	:ShapeObject(id), DrawableObject(id), TransformableObject(id)
 {
 	this->point = point;
 	this->ray = ray;
