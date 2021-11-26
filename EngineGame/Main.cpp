@@ -4,6 +4,7 @@
 #include "PrimitiveRenderer.h"
 #include "Circle.h"
 #include "Triangle.h"
+#include "BitmapHandler.h"
 #include "Quat.h"
 #include "Player.h"
 
@@ -40,6 +41,9 @@ int main(void)
 
     engine.mouseProcess();
 
+    BitmapHandler* bitmap = new BitmapHandler();
+    GLuint texture = bitmap->loadTexture("Textures/image.BMP", 513, 400);
+
     int rotateFlag = 1;
     Circle* x = new Circle("1", new Point2D(20.0, 20.0), 30.0);
     Triangle* t1 = new Triangle("2", new Point2D(10,10), new Point2D(10, 20), new Point2D(20, 10));
@@ -50,7 +54,7 @@ int main(void)
     Point2D* q1 = new Point2D(2.0, 2.0);
     Point2D* q2 = new Point2D(40.0, 40.0);
     Point2D* p0 = new Point2D(40.0, 40.0);
-
+        
     while (!glfwWindowShouldClose(engine.m_GameWindow))
     {
         /* Render here */
@@ -95,6 +99,11 @@ int main(void)
 
         /* Poll for and process events */
         glfwPollEvents();
+        if (rotateFlag == 2)
+        {
+            bitmap->saveAsBMP("bitmap.bmp");
+            rotateFlag = 3;
+        }
 
     }
 
