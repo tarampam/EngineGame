@@ -4,7 +4,7 @@
 #include "PrimitiveRenderer.h"
 #include "Circle.h"
 #include "Triangle.h"
-
+#include "Quat.h"
 #include "Player.h"
 
 
@@ -42,6 +42,8 @@ int main(void)
     int rotateFlag = 1;
     Circle* x = new Circle("1", glm::vec3(0, 0, 0), glm::vec3(0, 0, 0), new Point2D(20.0, 20.0), 30.0);
     Triangle* t1 = new Triangle("2", glm::vec3(0, 0, 0), glm::vec3(0, 0, 0), new Point2D(10,10), new Point2D(10, 20), new Point2D(20, 10));
+    Quat* quat1 = new Quat("4", glm::vec3(0, 0, 0), glm::vec3(0, 0, 0), new Point2D(100, 100), new Point2D(110, 110));
+    Quat* quat2 = new Quat("4", glm::vec3(0, 0, 0), glm::vec3(0, 0, 0), new Point2D(100, 100), new Point2D(110, 110));
     Player* singlePLayer = new Player("3", glm::vec3(0, 0, 0), glm::vec3(0, 0, 0), new Point2D(10.0, 10.0), new Point2D(40.0, 40.0));
 
     Point2D* q1 = new Point2D(2.0, 2.0);
@@ -55,7 +57,7 @@ int main(void)
         //engine.timer();
 
         singlePLayer->draw();
-        singlePLayer->move(engine.m_GameWindow, q1);
+        singlePLayer->move(engine.m_GameWindow, p1);
 
         //engine.createPoints();
         //p->createTriangle(p1,p2,p3);
@@ -70,6 +72,8 @@ int main(void)
         //p->cretaeLineBySegment(s1);
         //p->createLineIncremental(p11, p10);
 
+        quat1->draw();
+        //quat1->rotate(45, glm::vec3(-10, -10, 0));
         p->createCircle(p12, 120);
         p->createEllipse(p12, 0, 360, 120, 60);
         
@@ -84,7 +88,6 @@ int main(void)
             t1->scale(5, glm::vec3(40, 40, 0));
             rotateFlag = 2;
         }
-
         engine.processInputKey();
         /* Swap front and back buffers */
         glfwSwapBuffers(engine.m_GameWindow);
