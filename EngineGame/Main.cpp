@@ -49,7 +49,7 @@ int main(void)
     Triangle* t1 = new Triangle("2", new Point2D(10,10), new Point2D(10, 20), new Point2D(20, 10));
     Quat* quat1 = new Quat("4", new Point2D(100, 100), new Point2D(110, 110));
     Quat* quat2 = new Quat("4", new Point2D(100, 100), new Point2D(110, 110));
-    Player* singlePLayer = new Player("3", new Point2D(10.0, 10.0), new Point2D(40.0, 40.0));
+    Player* singlePLayer = new Player("3", new Point2D(10.0, 10.0), new Point2D(40.0, 40.0), texture);
 
     Point2D* q1 = new Point2D(2.0, 2.0);
     Point2D* q2 = new Point2D(40.0, 40.0);

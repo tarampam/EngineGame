@@ -8,7 +8,7 @@ class Player:public ShapeObject {
 	GLuint texture;
 public:
 
-	Player(std::string id, glm::vec3 position, glm::vec3 size, Point2D* point1, Point2D* point2, GLuint texture);
+	Player(std::string id, Point2D* point1, Point2D* point2, GLuint texture);
 
 	void draw() override;
 	void translate(glm::vec3 moveVector) override;

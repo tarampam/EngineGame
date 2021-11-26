@@ -1,7 +1,7 @@
 #include "Player.h"
 
-Player::Player(std::string id, glm::vec3 position, glm::vec3 size, Point2D* point1, Point2D* point2, GLuint texture)
-	:ShapeObject(id, position, size), DrawableObject(id, position, size), TransformableObject(id, position, size)
+Player::Player(std::string id, Point2D* point1, Point2D* point2, GLuint texture)
+	:ShapeObject(id), DrawableObject(id), TransformableObject(id)
 {
 	this->point1 = point1;
 	this->point2 = point2;
